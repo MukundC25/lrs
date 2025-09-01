@@ -29,7 +29,7 @@ export function Footer() {
             <div className="flex items-center space-x-1 text-sm text-muted-foreground">
               <span>Made with</span>
               <Heart className="w-4 h-4 text-red-500 fill-current" />
-              <span>using AI</span>
+              <span>by Mukund</span>
             </div>
           </div>
 
@@ -74,7 +74,7 @@ export function Footer() {
               </li>
               <li>
                 <a
-                  href="https://github.com"
+                  href="https://github.com/MukundC25/lrs"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="text-sm text-muted-foreground hover:text-primary transition-colors flex items-center space-x-1"
