@@ -63,7 +63,7 @@ export function Footer() {
             <ul className="space-y-2">
               <li>
                 <a
-                  href="/api/docs"
+                  href="http://localhost:7017/docs"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="text-sm text-muted-foreground hover:text-primary transition-colors flex items-center space-x-1"
