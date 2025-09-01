@@ -1,0 +1,26 @@
+id,title,ingredients,cook_time_min,mood_tag,tags,image,description
+1,Power Green Smoothie,"spinach,banana,protein powder,almond milk",5,energized,"protein,energy,smoothie,quick,healthy",https://images.unsplash.com/photo-1610970881699-44a5587cabec?w=400&h=300&fit=crop,Nutrient-packed smoothie for energy boost
+2,Comfort Mac & Cheese,"pasta,cheese,milk,butter,breadcrumbs",25,calm,"comfort,warm,creamy,satisfying,cozy",https://images.unsplash.com/photo-1574894709920-11b28e7367e3?w=400&h=300&fit=crop,Creamy comfort food for relaxation
+3,Quick Avocado Toast,"bread,avocado,lemon,salt,pepper",5,stressed,"quick,simple,healthy,avocado,toast",https://images.unsplash.com/photo-1541519227354-08fa5d50c44d?w=400&h=300&fit=crop,Simple and nutritious quick meal
+4,Rainbow Buddha Bowl,"quinoa,vegetables,chickpeas,tahini,herbs",20,happy,"colorful,healthy,bowl,variety,fresh",https://images.unsplash.com/photo-1512621776951-a57141f2eefd?w=400&h=300&fit=crop,Vibrant and nutritious bowl meal
+5,Energy Protein Balls,"dates,nuts,protein powder,coconut",10,tired,"energy,protein,snack,no-bake,boost",https://images.unsplash.com/photo-1606890737304-57a1ca8a5b62?w=400&h=300&fit=crop,No-bake energy-boosting snacks
+6,Chamomile Tea Latte,"chamomile tea,milk,honey,vanilla",8,calm,"tea,warm,soothing,relaxing,beverage",/images/recipes/tea-latte.jpg,Soothing bedtime beverage
+7,Pre-Workout Banana Smoothie,"banana,oats,peanut butter,milk",5,energized,"pre-workout,banana,protein,energy,quick",/images/recipes/banana-smoothie.jpg,Perfect fuel for your workout
+8,Healing Chicken Soup,"chicken,vegetables,broth,herbs,noodles",45,stressed,"soup,healing,warm,comfort,nutritious",/images/recipes/chicken-soup.jpg,Nourishing soup for comfort and healing
+9,Celebration Fruit Salad,"mixed fruits,honey,mint,lime",15,happy,"fruit,fresh,colorful,light,celebration",/images/recipes/fruit-salad.jpg,Fresh and vibrant fruit medley
+10,Recovery Chocolate Milk,"milk,cocoa,honey,vanilla,ice",3,tired,"recovery,chocolate,sweet,quick,beverage",/images/recipes/chocolate-milk.jpg,Post-workout recovery drink
+11,Mediterranean Wrap,"tortilla,hummus,vegetables,feta,olives",10,energized,"wrap,mediterranean,fresh,protein,portable",/images/recipes/med-wrap.jpg,Fresh Mediterranean-inspired wrap
+12,Golden Turmeric Latte,"turmeric,milk,ginger,honey,cinnamon",8,calm,"turmeric,anti-inflammatory,warm,spiced,healing",/images/recipes/turmeric-latte.jpg,Anti-inflammatory golden milk
+13,5-Minute Scrambled Eggs,"eggs,butter,herbs,cheese",5,stressed,"eggs,quick,protein,simple,breakfast",/images/recipes/scrambled-eggs.jpg,Quick and easy protein-rich meal
+14,Acai Berry Bowl,"acai,berries,granola,coconut,honey",12,happy,"acai,berries,antioxidants,colorful,bowl",/images/recipes/acai-bowl.jpg,Antioxidant-rich superfood bowl
+15,Overnight Oats,"oats,milk,chia seeds,fruit,honey",5,tired,"overnight,oats,easy,prepare-ahead,fiber",/images/recipes/overnight-oats.jpg,No-cook breakfast prepared the night before
+16,Green Detox Juice,"cucumber,celery,apple,lemon,ginger",8,energized,"juice,detox,green,fresh,cleansing",/images/recipes/green-juice.jpg,Refreshing detoxifying green juice
+17,Cozy Hot Chocolate,"milk,chocolate,marshmallows,cinnamon",10,calm,"hot-chocolate,warm,cozy,sweet,comfort",/images/recipes/hot-chocolate.jpg,Rich and comforting hot chocolate
+18,Stress-Relief Herbal Tea,"lavender,chamomile,lemon balm,honey",5,stressed,"herbal,tea,calming,stress-relief,natural",/images/recipes/herbal-tea.jpg,Calming herbal tea blend
+19,Party Veggie Platter,"vegetables,hummus,ranch,cheese,crackers",20,happy,"vegetables,party,social,healthy,colorful",/images/recipes/veggie-platter.jpg,Colorful vegetable platter for sharing
+20,Vitamin C Smoothie,"orange,mango,ginger,coconut water",6,tired,"vitamin-c,immune,tropical,refreshing,boost",/images/recipes/vitamin-smoothie.jpg,Immune-boosting tropical smoothie
+21,Quinoa Power Salad,"quinoa,vegetables,nuts,seeds,dressing",15,energized,"quinoa,salad,protein,power,nutritious",/images/recipes/quinoa-salad.jpg,Protein-packed quinoa salad
+22,Warm Oatmeal Bowl,"oats,milk,cinnamon,fruit,nuts",12,calm,"oatmeal,warm,comforting,fiber,wholesome",/images/recipes/oatmeal.jpg,Warming and satisfying oatmeal
+23,Cucumber Water,"cucumber,water,mint,lemon",3,stressed,"water,hydrating,refreshing,simple,detox",/images/recipes/cucumber-water.jpg,Refreshing infused water
+24,Celebration Smoothie Bowl,"berries,banana,granola,coconut,seeds",15,happy,"smoothie-bowl,colorful,toppings,fun,instagram",/images/recipes/smoothie-bowl.jpg,Beautiful and delicious smoothie bowl
+25,Sleepy Time Snack,"almonds,cherries,milk,honey",5,tired,"bedtime,snack,melatonin,natural,sleep",/images/recipes/bedtime-snack.jpg,Natural sleep-promoting snack

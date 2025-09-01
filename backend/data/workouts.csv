@@ -1,0 +1,26 @@
+id,title,type,duration_min,difficulty,mood_tag,tags,image,description
+1,Morning HIIT Blast,HIIT,15,intermediate,energized,"hiit,cardio,intense,morning,quick",https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=400&h=300&fit=crop,High-intensity interval training to kickstart your day
+2,Zen Yoga Flow,Yoga,30,beginner,calm,"yoga,stretching,relaxing,mindful,gentle",https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?w=400&h=300&fit=crop,Gentle yoga flow for relaxation and mindfulness
+3,Stress Relief Stretches,Stretching,10,beginner,stressed,"stretching,stress-relief,gentle,breathing,recovery",https://images.unsplash.com/photo-1506629905607-d405b7a30db9?w=400&h=300&fit=crop,Quick stretches to release tension and stress
+4,Dance Party Cardio,Dance,20,intermediate,happy,"dance,fun,cardio,energetic,social",https://images.unsplash.com/photo-1504609813442-a8924e83f76e?w=400&h=300&fit=crop,Fun dance workout to boost your mood
+5,Power Strength Training,Strength,45,advanced,energized,"strength,weights,intense,muscle,power",https://images.unsplash.com/photo-1581009146145-b5ef050c2e1e?w=400&h=300&fit=crop,Comprehensive strength training session
+6,Gentle Recovery Yoga,Yoga,25,beginner,tired,"yoga,recovery,gentle,restorative,low-impact",https://images.unsplash.com/photo-1506629905607-d405b7a30db9?w=400&h=300&fit=crop,Restorative yoga for tired muscles
+7,Quick Core Blast,Core,10,intermediate,energized,"core,abs,quick,intense,strength",https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=400&h=300&fit=crop,Fast and effective core strengthening
+8,Meditation & Movement,Meditation,15,beginner,calm,"meditation,mindful,gentle,breathing,relaxing",https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?w=400&h=300&fit=crop,Mindful movement and meditation practice
+9,Cardio Kickboxing,Cardio,30,intermediate,energized,"cardio,kickboxing,intense,fun,stress-relief",https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=400&h=300&fit=crop,High-energy kickboxing workout
+10,Evening Wind Down,Stretching,20,beginner,calm,"stretching,evening,relaxing,gentle,recovery",https://images.unsplash.com/photo-1506629905607-d405b7a30db9?w=400&h=300&fit=crop,Gentle stretches to end your day
+11,Tabata Express,HIIT,12,advanced,energized,"tabata,hiit,intense,quick,cardio",/images/workouts/tabata.jpg,Ultra-intense 12-minute Tabata workout
+12,Pilates Core Flow,Pilates,35,intermediate,calm,"pilates,core,controlled,mindful,strength",/images/workouts/pilates.jpg,Controlled Pilates movements for core strength
+13,Walking Meditation,Walking,15,beginner,stressed,"walking,meditation,gentle,outdoor,mindful",/images/workouts/walk.jpg,Mindful walking for stress relief
+14,Bodyweight Bootcamp,Bodyweight,25,intermediate,energized,"bodyweight,bootcamp,strength,intense,functional",/images/workouts/bootcamp.jpg,No-equipment bodyweight training
+15,Yin Yoga Deep Stretch,Yoga,40,beginner,tired,"yin,yoga,deep-stretch,restorative,relaxing",/images/workouts/yin.jpg,Deep stretching and relaxation
+16,5-Minute Energy Boost,Cardio,5,beginner,tired,"quick,energy,cardio,boost,simple",/images/workouts/energy.jpg,Quick energy-boosting movements
+17,Flexibility Flow,Stretching,30,intermediate,calm,"flexibility,flow,stretching,mobility,gentle",/images/workouts/flexibility.jpg,Comprehensive flexibility routine
+18,AMRAP Challenge,HIIT,20,advanced,energized,"amrap,challenge,intense,strength,cardio",/images/workouts/amrap.jpg,As Many Rounds As Possible challenge
+19,Breathwork Session,Breathing,10,beginner,stressed,"breathing,relaxation,stress-relief,mindful,calm",/images/workouts/breathwork.jpg,Focused breathing exercises
+20,Full Body Flow,Full Body,35,intermediate,happy,"full-body,flow,strength,cardio,variety",/images/workouts/fullbody.jpg,Complete full-body workout routine
+21,Desk Stretch Break,Stretching,8,beginner,stressed,"desk,office,quick,stretching,posture",/images/workouts/desk.jpg,Perfect stretches for office workers
+22,Barre Sculpt,Barre,30,intermediate,happy,"barre,sculpt,toning,graceful,strength",/images/workouts/barre.jpg,Ballet-inspired toning workout
+23,Martial Arts Flow,Martial Arts,25,intermediate,energized,"martial-arts,flow,strength,focus,discipline",/images/workouts/martial.jpg,Martial arts-inspired movement flow
+24,Restorative Poses,Yoga,20,beginner,tired,"restorative,yoga,relaxing,gentle,recovery",/images/workouts/restorative.jpg,Deeply relaxing yoga poses
+25,Sprint Intervals,Running,15,advanced,energized,"running,sprints,intense,cardio,outdoor",/images/workouts/sprint.jpg,High-intensity sprint training
