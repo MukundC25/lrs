@@ -10,9 +10,15 @@ from core.logging import app_logger
 from services.data_loader import data_loader
 from services.mood_mapper import mood_mapper
 
-# Disable surprise for now to avoid hanging
-SURPRISE_AVAILABLE = False
-app_logger.info("Using content-based filtering only for stability")
+# Try to import surprise for collaborative filtering
+try:
+    from surprise import Dataset, Reader, SVD
+    from surprise.model_selection import train_test_split
+    SURPRISE_AVAILABLE = True
+    app_logger.info("scikit-surprise available - collaborative filtering enabled")
+except ImportError:
+    SURPRISE_AVAILABLE = False
+    app_logger.warning("scikit-surprise not available - falling back to content-based only")
 
 
 class RecommendationEngine:
@@ -24,92 +30,73 @@ class RecommendationEngine:
         self.content_matrices = {}
         self.collaborative_models = {}
         self.item_features = {}
-        self._initialized = False
-
-    def _ensure_initialized(self):
-        """Ensure models are initialized (lazy initialization)."""
-        if not self._initialized:
-            self._initialize_models()
-            self._initialized = True
-
+        self._initialize_models()
+    
     def _initialize_models(self):
         """Initialize recommendation models."""
         try:
-            app_logger.info("Starting model initialization...")
             self._build_content_models()
             if SURPRISE_AVAILABLE:
                 self._build_collaborative_models()
-            app_logger.info("Model initialization completed successfully")
         except Exception as e:
             app_logger.error(f"Error initializing models: {e}")
-            # Continue without models - will use simple scoring
-            app_logger.warning("Continuing with simplified recommendation logic")
     
     def _build_content_models(self):
         """Build content-based recommendation models."""
-        app_logger.info("Building content-based models...")
         for domain in ['workouts', 'recipes', 'courses']:
-            try:
-                app_logger.info(f"Processing {domain}...")
-                df = data_loader.get_data(domain)
-                if df.empty:
-                    app_logger.warning(f"No data found for {domain}")
-                    continue
-
-                # Create feature text combining tags and other attributes
-                feature_texts = []
-                item_features = []
-
-                for _, item in df.iterrows():
-                    # Combine tags, mood tags, and other text features
-                    features = []
-
-                    if 'tags_list' in item and isinstance(item['tags_list'], list):
-                        features.extend(item['tags_list'])
-
-                    if 'mood_tags' in item and isinstance(item['mood_tags'], list):
-                        features.extend(item['mood_tags'])
-
-                    # Add difficulty if available
-                    if 'difficulty' in item and pd.notna(item['difficulty']):
-                        features.append(str(item['difficulty']).lower())
-
-                    # Add type/category if available
-                    if 'type' in item and pd.notna(item['type']):
-                        features.append(str(item['type']).lower())
-
-                    feature_text = ' '.join(features)
-                    feature_texts.append(feature_text)
-
-                    # Store item features for scoring
-                    item_features.append({
-                        'item_id': item['item_id'],
-                        'tags': item.get('tags_list', []),
-                        'mood_tags': item.get('mood_tags', []),
-                        'duration': item.get('duration_min', 30),
-                        'difficulty': item.get('difficulty', 'intermediate'),
-                        'domain': item['domain']
-                    })
-
-                if feature_texts:
-                    # Build TF-IDF matrix with simpler settings
-                    vectorizer = TfidfVectorizer(
-                        max_features=500,  # Reduced for faster processing
-                        stop_words='english',
-                        ngram_range=(1, 1)  # Only unigrams for speed
-                    )
-                    app_logger.info(f"Building TF-IDF matrix for {domain} with {len(feature_texts)} items")
-                    tfidf_matrix = vectorizer.fit_transform(feature_texts)
-
-                    self.tfidf_vectorizers[domain] = vectorizer
-                    self.content_matrices[domain] = tfidf_matrix
-                    self.item_features[domain] = item_features
-
-                    app_logger.info(f"Built content model for {domain}: {tfidf_matrix.shape}")
-
-            except Exception as e:
-                app_logger.error(f"Error building content model for {domain}: {e}")
-                # Continue with next domain
+            df = data_loader.get_data(domain)
+            if df.empty:
+                continue
+            
+            # Create feature text combining tags and other attributes
+            feature_texts = []
+            item_features = []
+            
+            for _, item in df.iterrows():
+                # Combine tags, mood tags, and other text features
+                features = []
+                
+                if 'tags_list' in item and isinstance(item['tags_list'], list):
+                    features.extend(item['tags_list'])
+                
+                if 'mood_tags' in item and isinstance(item['mood_tags'], list):
+                    features.extend(item['mood_tags'])
+                
+                # Add difficulty if available
+                if 'difficulty' in item and pd.notna(item['difficulty']):
+                    features.append(str(item['difficulty']).lower())
+                
+                # Add type/category if available
+                if 'type' in item and pd.notna(item['type']):
+                    features.append(str(item['type']).lower())
+                
+                feature_text = ' '.join(features)
+                feature_texts.append(feature_text)
+                
+                # Store item features for scoring
+                item_features.append({
+                    'item_id': item['item_id'],
+                    'tags': item.get('tags_list', []),
+                    'mood_tags': item.get('mood_tags', []),
+                    'duration': item.get('duration_min', 30),
+                    'difficulty': item.get('difficulty', 'intermediate'),
+                    'domain': item['domain']
+                })
+            
+            if feature_texts:
+                # Build TF-IDF matrix
+                vectorizer = TfidfVectorizer(
+                    max_features=1000,
+                    stop_words='english',
+                    ngram_range=(1, 2)
+                )
+                tfidf_matrix = vectorizer.fit_transform(feature_texts)
+                
+                self.tfidf_vectorizers[domain] = vectorizer
+                self.content_matrices[domain] = tfidf_matrix
+                self.item_features[domain] = item_features
+                
+                app_logger.info(f"Built content model for {domain}: {tfidf_matrix.shape}")
     
     def _build_collaborative_models(self):
         """Build collaborative filtering models using surprise."""
@@ -160,15 +147,10 @@ class RecommendationEngine:
             except Exception as e:
                 app_logger.error(f"Error building collaborative model for {domain}: {e}")
     
-    def get_content_recommendations(self, mood: str, interests: List[str],
+    def get_content_recommendations(self, mood: str, interests: List[str], 
                                   available_minutes: int, limit: int = 6) -> List[Dict]:
         """Get content-based recommendations."""
         recommendations = []
-
-        # Check if we have any models built
-        if not self.item_features:
-            app_logger.warning("No content models available, using fallback")
-            return self._get_fallback_recommendations(mood, available_minutes, interests, limit)
         
         # Get mood preferences
         domain_weights = mood_mapper.get_domain_weights(mood)
@@ -304,92 +286,28 @@ class RecommendationEngine:
         combined_recs.sort(key=lambda x: x['final_score'], reverse=True)
         return combined_recs
     
-    def get_recommendations(self, mood: str, available_minutes: int,
-                          interests: List[str], limit: int = 6,
+    def get_recommendations(self, mood: str, available_minutes: int, 
+                          interests: List[str], limit: int = 6, 
                           user_session: Optional[str] = None) -> List[Dict]:
         """Get combined recommendations."""
-        try:
-            # Ensure models are initialized
-            self._ensure_initialized()
-            # Get content-based recommendations
-            content_recs = self.get_content_recommendations(
-                mood, interests, available_minutes, limit * 2  # Get more for better selection
-            )
-
-            # Get collaborative recommendations if available
-            collaborative_recs = []
-            if user_session and SURPRISE_AVAILABLE:
-                for domain in ['workout', 'recipe', 'course']:
-                    domain_collab = self.get_collaborative_recommendations(
-                        user_session, domain + 's', limit
-                    )
-                    collaborative_recs.extend(domain_collab)
-
-            # Combine recommendations
-            final_recs = self.combine_recommendations(content_recs, collaborative_recs)
-
-            return final_recs[:limit]
-
-        except Exception as e:
-            app_logger.error(f"Error getting recommendations: {e}")
-            # Fallback to simple recommendations
-            return self._get_fallback_recommendations(mood, available_minutes, interests, limit)
-
-    def _get_fallback_recommendations(self, mood: str, available_minutes: int,
-                                    interests: List[str], limit: int) -> List[Dict]:
-        """Fallback recommendations when ML models fail."""
-        app_logger.info("Using fallback recommendation logic")
-        recommendations = []
-
-        # Get domain weights based on mood
-        domain_weights = mood_mapper.get_domain_weights(mood)
-
-        # Filter domains based on interests
-        active_domains = []
-        if 'lifestyle' in interests:
-            active_domains.extend(['workouts', 'recipes'])
-        if 'learning' in interests:
-            active_domains.append('courses')
-
-        if not active_domains:
-            active_domains = ['workouts', 'recipes', 'courses']
-
-        for domain in active_domains:
-            try:
-                df = data_loader.get_data(domain)
-                if df.empty:
-                    continue
-
-                # Simple filtering by time and mood
-                filtered_items = []
-                for _, item in df.iterrows():
-                    # Check time constraint
-                    if item['duration_min'] <= available_minutes:
-                        # Simple mood matching
-                        mood_tags = item.get('mood_tags', [])
-                        if isinstance(mood_tags, list) and mood in mood_tags:
-                            score = 0.8  # High score for mood match
-                        else:
-                            score = 0.5  # Default score
-
-                        filtered_items.append({
-                            'item_id': item['item_id'],
-                            'domain': item['domain'],
-                            'content_score': score,
-                            'mood_score': score,
-                            'time_score': 1.0 if item['duration_min'] <= available_minutes * 0.8 else 0.7,
-                            'duration': item['duration_min']
-                        })
-
-                # Sort by score and take top items
-                filtered_items.sort(key=lambda x: x['content_score'], reverse=True)
-                domain_limit = max(1, int(limit * domain_weights.get(domain.rstrip('s'), 0.33)))
-                recommendations.extend(filtered_items[:domain_limit])
-
-            except Exception as e:
-                app_logger.error(f"Error in fallback recommendations for {domain}: {e}")
-
-        return recommendations[:limit]
+        # Get content-based recommendations
+        content_recs = self.get_content_recommendations(
+            mood, interests, available_minutes, limit * 2  # Get more for better selection
+        )
+        
+        # Get collaborative recommendations if available
+        collaborative_recs = []
+        if user_session and SURPRISE_AVAILABLE:
+            for domain in ['workout', 'recipe', 'course']:
+                domain_collab = self.get_collaborative_recommendations(
+                    user_session, domain + 's', limit
+                )
+                collaborative_recs.extend(domain_collab)
+        
+        # Combine recommendations
+        final_recs = self.combine_recommendations(content_recs, collaborative_recs)
+        
+        return final_recs[:limit]
 
 
 # Global instance

@@ -76,8 +76,7 @@ export default function HomePage() {
     queryKey: ['health'],
     queryFn: apiClient.getHealth,
     refetchInterval: 30000, // Check every 30 seconds
-    retry: 1, // Reduce retries to avoid long delays
-    enabled: true, // Re-enable health check
+    retry: 3,
   });
 
   const handleGeneratePlaylist = () => {

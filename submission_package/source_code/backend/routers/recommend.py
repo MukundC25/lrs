@@ -8,7 +8,7 @@ from sqlmodel import Session
 from core.config import settings
 from core.logging import app_logger
 from models.feedback import Feedback, FeedbackCreate, get_session
-# from services.playlist import playlist_generator
+from services.playlist import playlist_generator
 
 
 router = APIRouter(prefix="/api", tags=["recommendations"])
@@ -82,9 +82,6 @@ async def get_recommendations(request: RecommendationRequest):
         )
     
     try:
-        # Lazy import to avoid startup issues
-        from services.playlist import playlist_generator
-
         # Generate playlist
         result = playlist_generator.generate_playlist(
             mood=request.mood,
@@ -163,9 +160,6 @@ async def get_similar_items(item_id: str, limit: int = 5):
         )
     
     try:
-        # Lazy import to avoid startup issues
-        from services.playlist import playlist_generator
-
         similar_items = playlist_generator.get_similar_items(item_id, limit)
         
         return {
@@ -202,9 +196,6 @@ async def get_quick_suggestions(
         )
     
     try:
-        # Lazy import to avoid startup issues
-        from services.playlist import playlist_generator
-
         suggestions = playlist_generator.get_quick_suggestions(
             available_minutes, domain
         )
