@@ -16,10 +16,13 @@
 4. Import your `lrs` repository
 
 #### 2. **Configure Project Settings**
+⚠️ **IMPORTANT**: Set these exact settings:
 - **Framework Preset**: Next.js
-- **Root Directory**: `frontend`
+- **Root Directory**: `frontend` (CRITICAL!)
 - **Build Command**: `npm run build`
 - **Output Directory**: `.next`
+- **Install Command**: `npm install`
+- **Development Command**: `npm run dev`
 
 #### 3. **Environment Variables**
 Add these environment variables in Vercel dashboard:
