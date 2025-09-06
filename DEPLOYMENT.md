@@ -60,17 +60,28 @@ NEXT_PUBLIC_APP_ENV=production
 
 ### 🔍 Troubleshooting
 
+**"Functions property cannot be used with builds" Error?**
+- ✅ **FIXED**: Updated vercel.json to remove conflicting properties
+- Pull latest changes from GitHub and redeploy
+
 **Build Fails?**
 - Check Node.js version (use 18.x)
 - Verify all dependencies in package.json
+- Ensure root directory is set to `frontend`
 
 **API Not Working?**
 - Check Python runtime (3.9)
 - Verify requirements.txt includes all packages
+- Test `/api/health` endpoint first
 
 **CORS Issues?**
 - Ensure API URL matches in environment variables
 - Check CORS settings in FastAPI app
+
+**Deployment Stuck?**
+- Try refreshing the Vercel dashboard
+- Check build logs for specific errors
+- Ensure GitHub repository is up to date
 
 ### 📈 Performance Tips
 
