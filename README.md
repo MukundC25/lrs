@@ -28,6 +28,17 @@ PORT=3006 npm run dev
 docker-compose up --build
 ```
 
+## 🌐 Deployment
+
+### Deploy to Vercel (Recommended)
+1. Push your code to GitHub
+2. Connect repository to [Vercel](https://vercel.com)
+3. Set root directory to `frontend`
+4. Add environment variable: `NEXT_PUBLIC_API_URL=https://your-app.vercel.app`
+5. Deploy!
+
+📖 **Detailed deployment guide**: See [DEPLOYMENT.md](DEPLOYMENT.md)
+
 ## 🎯 Features
 
 - **Smart Recommendations**: AI-powered suggestions based on mood, time, and interests

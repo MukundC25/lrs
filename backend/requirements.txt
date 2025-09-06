@@ -13,6 +13,7 @@ pytest-asyncio>=0.21.0
 httpx>=0.25.0
 ruff>=0.1.0
 black>=23.0.0
+mangum>=0.17.0
 
 # Optional: scikit-surprise for collaborative filtering
 # If this fails to install, the app will fall back to content-based only
