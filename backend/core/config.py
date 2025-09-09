@@ -10,8 +10,12 @@ class Settings(BaseSettings):
     """Application settings."""
     
     # Server configuration
-    backend_port: int = 7017
-    allowed_origins: List[str] = ["http://localhost:3006"]
+    backend_port: int = int(os.getenv("PORT", 7017))
+    allowed_origins: List[str] = [
+        "http://localhost:3006",
+        "https://lrs-frontend.onrender.com",
+        "https://*.onrender.com"
+    ]
     
     # Database configuration
     database_url: str = "sqlite:///./feedback.db"

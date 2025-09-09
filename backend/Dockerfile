@@ -19,12 +19,11 @@ COPY . .
 # Create data directory
 RUN mkdir -p data
 
-# Expose port
-EXPOSE 7017
+# Expose port (Render will set PORT env var)
+EXPOSE $PORT
 
-# Health check
-HEALTHCHECK --interval=30s --timeout=10s --start-period=5s --retries=3 \
-    CMD curl -f http://localhost:7017/api/health || exit 1
+# Create logs directory
+RUN mkdir -p logs
 
-# Run the application
-CMD ["uvicorn", "app:app", "--host", "0.0.0.0", "--port", "7017"]
+# Run the application (Render sets PORT env var)
+CMD uvicorn app:app --host 0.0.0.0 --port $PORT
