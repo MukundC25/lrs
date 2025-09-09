@@ -1,0 +1,20 @@
+{
+  "name": "smart-lifestyle-recommender",
+  "version": "1.0.0",
+  "description": "Smart Lifestyle & Learning Recommender - Full Stack Application",
+  "private": true,
+  "workspaces": [
+    "frontend"
+  ],
+  "scripts": {
+    "dev": "cd frontend && npm run dev",
+    "build": "cd frontend && npm run build",
+    "start": "cd frontend && npm run start"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/MukundC25/lrs.git"
+  },
+  "author": "Mukund C",
+  "license": "MIT"
+}
