@@ -13,7 +13,7 @@ import type {
   SimilarItemsResponse,
   QuickSuggestionsResponse,
   ApiError,
-} from '@/lib/types';
+} from '../lib/types';
 
 // Create axios instance with base configuration
 const api = axios.create({

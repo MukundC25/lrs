@@ -2,9 +2,9 @@
 
 import { motion } from 'framer-motion';
 import { Clock } from 'lucide-react';
-import { cn } from '@/lib/utils';
-import type { AvailableTime, TimeSliderProps } from '@/lib/types';
-import { TIME_LABELS } from '@/lib/types';
+import { cn } from '../lib/utils';
+import type { AvailableTime, TimeSliderProps } from '../lib/types';
+import { TIME_LABELS } from '../lib/types';
 
 const TIME_OPTIONS: AvailableTime[] = [5, 10, 30, 60, 120];
 

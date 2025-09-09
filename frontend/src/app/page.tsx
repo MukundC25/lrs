@@ -5,19 +5,19 @@ import { motion } from 'framer-motion';
 import { useMutation, useQuery } from '@tanstack/react-query';
 import { Sparkles, RefreshCw, AlertCircle } from 'lucide-react';
 
-import { Header } from '@/components/Header';
-import { Footer } from '@/components/Footer';
-import { MoodSelector } from '@/components/MoodSelector';
-import { TimeSlider } from '@/components/TimeSlider';
-import { ToggleInterest } from '@/components/ToggleInterest';
-import { PlaylistRail } from '@/components/PlaylistRail';
-import { CardItem } from '@/components/CardItem';
-import { CardSkeleton, PlaylistSkeletonRail } from '@/components/CardSkeleton';
-import { ToastContainer } from '@/components/Toast';
+import { Header } from '../components/Header';
+import { Footer } from '../components/Footer';
+import { MoodSelector } from '../components/MoodSelector';
+import { TimeSlider } from '../components/TimeSlider';
+import { ToggleInterest } from '../components/ToggleInterest';
+import { PlaylistRail } from '../components/PlaylistRail';
+import { CardItem } from '../components/CardItem';
+import { CardSkeleton, PlaylistSkeletonRail } from '../components/CardSkeleton';
+import { ToastContainer } from '../components/Toast';
 
-import { useAppStore, useToast } from '@/lib/store';
+import { useAppStore, useToast } from '../lib/store';
 import { apiClient } from './api';
-import type { RecommendationRequest, PlaylistItem } from '@/lib/types';
+import type { RecommendationRequest, PlaylistItem } from '../lib/types';
 
 export default function HomePage() {
   const {

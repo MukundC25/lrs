@@ -5,13 +5,13 @@
 import { render, screen, fireEvent, waitFor } from '@testing-library/react'
 import userEvent from '@testing-library/user-event'
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
-import { MoodSelector } from '@/components/MoodSelector'
-import { TimeSlider } from '@/components/TimeSlider'
-import { ToggleInterest } from '@/components/ToggleInterest'
-import { CardItem } from '@/components/CardItem'
-import { Header } from '@/components/Header'
-import { Footer } from '@/components/Footer'
-import type { PlaylistItem } from '@/lib/types'
+import { MoodSelector } from '../components/MoodSelector'
+import { TimeSlider } from '../components/TimeSlider'
+import { ToggleInterest } from '../components/ToggleInterest'
+import { CardItem } from '../components/CardItem'
+import { Header } from '../components/Header'
+import { Footer } from '../components/Footer'
+import type { PlaylistItem } from '../lib/types'
 
 // Test wrapper with providers
 const TestWrapper = ({ children }: { children: React.ReactNode }) => {

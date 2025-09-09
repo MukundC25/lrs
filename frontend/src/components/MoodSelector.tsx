@@ -1,9 +1,9 @@
 'use client';
 
 import { motion } from 'framer-motion';
-import { cn } from '@/lib/utils';
-import type { Mood, MoodSelectorProps } from '@/lib/types';
-import { MOOD_EMOJIS } from '@/lib/types';
+import { cn } from '../lib/utils';
+import type { Mood, MoodSelectorProps } from '../lib/types';
+import { MOOD_EMOJIS } from '../lib/types';
 
 const MOOD_OPTIONS: { value: Mood; label: string; description: string }[] = [
   { value: 'energized', label: 'Energized', description: 'Ready for action!' },

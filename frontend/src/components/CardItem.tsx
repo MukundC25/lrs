@@ -4,9 +4,9 @@ import { useState } from 'react';
 import { motion } from 'framer-motion';
 import { Heart, ThumbsDown, Clock, Star, Info } from 'lucide-react';
 import Image from 'next/image';
-import { cn } from '@/lib/utils';
-import type { CardItemProps } from '@/lib/types';
-import { DOMAIN_EMOJIS } from '@/lib/types';
+import { cn } from '../lib/utils';
+import type { CardItemProps } from '../lib/types';
+import { DOMAIN_EMOJIS } from '../lib/types';
 
 export function CardItem({ 
   item, 

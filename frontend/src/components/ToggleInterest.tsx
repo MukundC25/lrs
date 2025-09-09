@@ -2,9 +2,9 @@
 
 import { motion } from 'framer-motion';
 import { Heart, BookOpen, Check } from 'lucide-react';
-import { cn } from '@/lib/utils';
-import type { Interest, InterestToggleProps } from '@/lib/types';
-import { INTEREST_LABELS } from '@/lib/types';
+import { cn } from '../lib/utils';
+import type { Interest, InterestToggleProps } from '../lib/types';
+import { INTEREST_LABELS } from '../lib/types';
 
 const INTEREST_OPTIONS: { value: Interest; label: string; icon: React.ReactNode; description: string }[] = [
   {

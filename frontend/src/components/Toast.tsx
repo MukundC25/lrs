@@ -3,8 +3,8 @@
 import { useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { X, CheckCircle, AlertCircle, Info, AlertTriangle } from 'lucide-react';
-import { useToastStore } from '@/lib/store';
-import { cn } from '@/lib/utils';
+import { useToastStore } from '../lib/store';
+import { cn } from '../lib/utils';
 
 const toastIcons = {
   success: CheckCircle,

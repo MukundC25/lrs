@@ -5,9 +5,9 @@ import { motion } from 'framer-motion';
 import useEmblaCarousel from 'embla-carousel-react';
 import { ChevronLeft, ChevronRight, Play, Heart, ThumbsDown, Clock, Star } from 'lucide-react';
 import Image from 'next/image';
-import { cn } from '@/lib/utils';
-import type { PlaylistRailProps } from '@/lib/types';
-import { DOMAIN_EMOJIS } from '@/lib/types';
+import { cn } from '../lib/utils';
+import type { PlaylistRailProps } from '../lib/types';
+import { DOMAIN_EMOJIS } from '../lib/types';
 
 export function PlaylistRail({ items, onItemClick, onLike, onDislike }: PlaylistRailProps) {
   const [emblaRef, emblaApi] = useEmblaCarousel({ 
